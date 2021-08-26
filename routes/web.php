@@ -27,8 +27,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'admin'], function() {
     Route::get('news/create', 'Admin\NewsController@add')->middleware('auth');
-    //課題4
+    
     Route::get('profile/create', 'Admin\ProfileController@add')->middleware('auth');
     Route::get('profile/edit', 'Admin\ProfileController@edit')->middleware('auth');
     
-});
+    //『PHP/Laravel 13 ニュース投稿画面を作成しよう』での追記
+   Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
+         Route::get('news/create','Admin\NewsController@add');
+         Route::post('news/create', 'Admin\NewsController@create');
+   }});
+   
+   
+   
