@@ -36,7 +36,8 @@
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'Laravel') }}
                     </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
@@ -59,23 +60,23 @@
                          
                             
                          @else
-                         <li class="nav-item dropdown"></li>
-                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" 
+                         <li class="nav-item dropdown">
+                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"  
                          role="button" date-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                             {{ Auto::user()->name}}<span="caret"></span>
+                             {{ Auth::user()->name}} <span class="caret"></span>
                          </a>
                             
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown"></div>
-                            <a class="dropdown-item" href="{{ route('logout')}}"
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
                             
                             onclidk="event.preventDefault();
                             
-                            document.getELementbyId('logout-form').submit();">
+                            document.getElementById('logout-form').submit();">
                                 {{__('Logout')}}
                             </a>
                             
                             
-                            <form id="logout-form" action="{{ route('logout')}}" method="POST"
+                            <form id="logout-form" action="{{  route('logout') }}" method="POST"
                             style="display: none;">
                                 @csrf
                             </form>
