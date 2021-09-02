@@ -149,6 +149,10 @@ return [
     'attributes' => [
         ’title' => 'タイトル',
         'body' => '本文'
-        ],
+        
+    
+    
+        
+    ],
 
 ];

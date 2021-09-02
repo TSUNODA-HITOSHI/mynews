@@ -11,9 +11,9 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>ニュース新規作成</h2>
-                <form action="{{action('Admin\NewsController@create')}}"method="post"enctype="multipart/form-date">
+                <form action="{{action('Admin\NewsController@create') }}"method="post"enctype="multipart/form-date">
 
-                     @if(count($errors) > 0)
+                     @if (count($errors) > 0)
                      <ul>
                     @foreach($$errors->all() as $e)
                     <li>{{ $e }}</li>
@@ -29,7 +29,7 @@
                      </div>
                      <div class="form-group row">
                          <label class="col-md-2"for="body">本文</label>
-                         <div call="col-md-10">
+                         <div class="col-md-10">
                              <textarea class="form-control" name="body" rows="20">{{  old('body')}}</textarea>
                          </div>
                         </div> 
