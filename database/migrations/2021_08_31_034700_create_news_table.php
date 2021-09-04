@@ -32,7 +32,7 @@ class CreateNewsTable extends Migration
 
 
 User::create([
-    'name' => '角田',
+    'name' => 'Tsunoda',
     'email' => 'shinsui889@hotmail.com',
     'password' => Hash::make("pass"),
 ]);
