@@ -100,5 +100,15 @@ public function index(Request $request)
         return redirect('admin/news');
     }
 
+//PHP/Laravel 16 投稿したニュースを更新/削除しよう にて追記
+public function delete(Request $request)
+{
+    //該当するNews Modelを取得
+    $news = News::find($request->id);
+    //削除する
+    $news->delete();
+    return redirect('admin/news/');
+}
+
 
 }
