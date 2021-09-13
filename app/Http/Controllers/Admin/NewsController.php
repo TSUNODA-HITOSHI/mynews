@@ -22,10 +22,8 @@ class NewsController extends Controller
       //以下を追記
       //Varidationを行う
       $this->validate($request, News::$rules);
-      
-      $news = new News;
+      $news = new News();
       $form = $request->all();
-     
      //フォームから画像が送信されてきたら、保存して、$news->image_path に画像のパスを保存する
      if (isset($form['image'])) {
          $path = $request->file('image')->store('public/image');
@@ -39,7 +37,6 @@ class NewsController extends Controller
       unset($form['_token']);
       //フォームから送信されてきたimageを削除する
       unset($form['image']);
-      
       //データベースに保存する
       $news->fill($form);
       $news->save();
@@ -56,7 +53,7 @@ public function index(Request $request)
             //検索されたら検索結果を取得する
             $posts = News::where('title', $cond_title)->get();
         } else {
-            //それ以外はすべてのニュースを取得する
+            
             $posts = News::all();
             
         }
@@ -109,6 +106,5 @@ public function delete(Request $request)
     $news->delete();
     return redirect('admin/news/');
 }
-
 
 }
