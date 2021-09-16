@@ -16,13 +16,9 @@ class ProfileController extends Controller
         return view('admin.profile.create');
     }
 
-
-
-
     public function create(Request $request)
     {
-        return redirect('admin/profile/create');
-        
+      dd(__LINE__.' '.__METHOD__);
     $this->validate($request, Profile::$rules);
 
     $profile = new Profile();
@@ -32,9 +28,9 @@ class ProfileController extends Controller
     if (isset($form['image'])) {
         $path = $request->file('image')->store('public/image');
         $profile->image_path = basename($path);
-      } else {
-          $profile->image_path = null;
-      }
+    } else {
+        $profile->image_path = null;
+    }
       
       unset($form['_token']);
       unset($form['image']);
@@ -45,9 +41,9 @@ class ProfileController extends Controller
       return redirect('admin/profile/create');
     }
     
-    public function index(Request $request)
+      public function index(Request $request)
        {
-    $cond_title = $request->cond_title;
+      $cond_title = $request->cond_title;
         if ($cond_title != '') {
             
             $posts = Profile::where('title', $cond_title)->get();
