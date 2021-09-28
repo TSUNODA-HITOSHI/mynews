@@ -15,13 +15,13 @@
         
         <!-- Scripts -->
         {{-- Laravel標準で用意されているJavascriptを読み込みます --}}
-        <script src="{{secure_asset('js/app.js')}}" defer></script>
+        <script src="{{ secure_asset('js/app.js') }}" defer></script>
         
         <!-- Fonts -->
-        <link rel="dns-prefetch" href="http://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type=text/css">
+        <link rel="dns-prefetch" href="http://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
     
-    
-        <!-- Styles -->
+        
         {{-- Laravel標準で用意されているCSSを読み込みます --}}
         <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
         {{-- この章の後半で作成するCSSを読み込みます --}}
@@ -53,36 +53,35 @@
                          {{-- 以下を追記　--}}
                          <!-- Authentication Links -->
                          {{-- ログインしていなかったらログイン画面へのリンクを表示 --}}
-                         @guest
-                         <li><a class="nav-link" href="{{ route('login')}}">{{__(
-                         'login')}}</a></li>
+                        @guest
+                        <li><a class="nav-link" href="{{ route('login') }}">{{__('login') }}</a></li>
                          {{--ログインしていたらユーザー名とログアウトボタンを表示--}}
                          
                             
-                         @else
-                         <li class="nav-item dropdown">
-                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"  
-                         role="button" date-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        @else
+                        <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#"  
+                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                              {{ Auth::user()->name}} <span class="caret"></span>
-                         </a>
+                        </a>
                             
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ route('logout') }}"
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('logout') }}"
                             
-                            onclidk="event.preventDefault();
+                        onclidk="event.preventDefault();
                             
-                            document.getElementById('logout-form').submit();">
-                                {{__('Logout')}}
-                            </a>
+                        document.getElementById('logout-form').submit();">
+                            {{__('Logout')}}
+                        </a>
                             
                             
-                            <form id="logout-form" action="{{  route('logout') }}" method="POST"
+                        <form id="logout-form" action="{{  route('logout') }}" method="POST"
                             style="display: none;">
                                 @csrf
-                            </form>
-                            </div>
-                            </li>
-                            @endguest
+                        </form>
+                        </div>
+                        </li>
+                        @endguest
                             
                         </ul>
                     </div>

@@ -18,7 +18,7 @@ class ProfileController extends Controller
 
     public function create(Request $request)
     {
-      dd(__LINE__.' '.__METHOD__);
+    //   dd(__LINE__.' '.__METHOD__);
     $this->validate($request, Profile::$rules);
 
     $profile = new Profile();
@@ -85,9 +85,16 @@ class ProfileController extends Controller
         unset($profile_form['remove']);
         unset($profile_form['_token']);
         
+        $history = new Profile-History();
+        $history->profile_id = $profile->id;
+        $history->edited_at = Carbon::now();
+        $history->save();
+        
+        return redirect('admin/news');
+        
         
         $profile_form->fill($profile_form)->save();
-        return redirect('admin/profile');
+        return redirect('admin/profile/edit');
     }
 
 

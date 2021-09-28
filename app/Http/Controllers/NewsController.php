@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\HTML;
 
 use App\News;
 
+use App\History;
+
+use Carbon\Carbon;
+
 class NewsController extends Controller
 {
     public function index(Request $request)
