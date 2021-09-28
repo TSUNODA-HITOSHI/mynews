@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Model;
 use App\Profile;
-use App\Profile-History;
+use App\ProfileHistory;
 use Carbon\Carbon;
 
 class ProfileController extends Controller
