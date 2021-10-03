@@ -87,15 +87,15 @@ class ProfileController extends Controller
         unset($profile_form['remove']);
         unset($profile_form['_token']);
         
-        $history = new Profile-History();
+        $profile->fill($profile_form)->save();
+        
+        $history = new ProfileHistory();
         $history->profile_id = $profile->id;
         $history->edited_at = Carbon::now();
         $history->save();
         
-        return redirect('admin/news');
         
         
-        $profile_form->fill($profile_form)->save();
         return redirect('admin/profile/edit');
     }
 
@@ -103,9 +103,9 @@ class ProfileController extends Controller
     public function delete(Request $request)
 {
     
-    $profile = Profile::find($request->id);
-    
-    $profile->delete();
+        $profile = Profile::find($request->id);
+        
+        $profile->delete();
     return redirect('admin/profile/');
 }
   
