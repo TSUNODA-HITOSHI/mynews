@@ -96,7 +96,7 @@ class ProfileController extends Controller
         
         
         
-        return redirect('admin/profile/edit');
+        return redirect('admin/profile');
     }
 
 
